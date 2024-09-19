@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace Micromarin.Service.Services;
 
-public abstract class GenericService<TEntity, TDto> : IGenericService<TEntity, TDto> where TEntity : class where TDto : class
+public class GenericService<TEntity, TDto> : IGenericService<TEntity, TDto> where TEntity : class where TDto : class
 {
   private readonly IUnitOfWork _unitOfWork;
   private readonly IGenericRepository<TEntity> _genericRepository;

@@ -3,6 +3,7 @@ using Micromarin.Core.Models;
 using Micromarin.Core.Services;
 using Micromarin.Shared.BaseController;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Micromarin.API.Controllers;
 
@@ -11,19 +12,20 @@ namespace Micromarin.API.Controllers;
 public class DynamicEntityController(IGenericService<DynamicEntity, DynamicEntityDto> _genericservice) : CustomBaseController
 {
   [HttpPost("Create")]
-  public async Task<IActionResult> Create(DynamicEntityDto dynamicEntityDto)
+  public async Task<IActionResult> Create([FromBody] DynamicEntityDto dynamicEntityDto)
   {
+
     return ActionResultInstance(await _genericservice.AddAsync(dynamicEntityDto));
   }
 
   [HttpPut("Update")]
-  public async Task<IActionResult> Update(Guid Id,DynamicEntityDto dynamicEntityDto)
+  public async Task<IActionResult> Update([FromQuery] Guid Id, [FromBody] DynamicEntityDto dynamicEntityDto)
   {
-    return ActionResultInstance(await _genericservice.Update(dynamicEntityDto,Id));
+    return ActionResultInstance(await _genericservice.Update(dynamicEntityDto, Id));
   }
 
   [HttpDelete("Delete/{Id}")]
-  public async Task<IActionResult> Update(Guid Id)
+  public async Task<IActionResult> Delete(Guid Id)
   {
     return ActionResultInstance(await _genericservice.Remove(Id));
   }

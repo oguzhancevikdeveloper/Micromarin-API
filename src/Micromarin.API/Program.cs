@@ -17,8 +17,8 @@ var enviromentName = builder.Environment.EnvironmentName;
 builder.Configuration.AddJsonFile($"appsettings.{enviromentName}.json", optional: true);
 
 
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<GenericDbContext>(options =>
