@@ -1,10 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Micromarin.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Micromarin.Data.Repositories;
 
@@ -30,7 +26,7 @@ public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> w
   {
     return await _dbset.ToListAsync();
   }
-  public async Task<TEntity> GetByIdAsync(int id)
+  public async Task<TEntity> GetByIdAsync(Guid id)
   {
     var entity = await _dbset.FindAsync(id);
     if (entity != null) _context.Entry(entity).State = EntityState.Detached;
