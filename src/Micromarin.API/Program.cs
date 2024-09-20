@@ -1,3 +1,4 @@
+using Micromarin.API.Extensions;
 using Micromarin.Core.Repositories;
 using Micromarin.Core.Services;
 using Micromarin.Core.UnitOfWork;
@@ -44,6 +45,7 @@ if (app.Environment.IsDevelopment())
   app.UseSwaggerUI();
 }
 
+app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

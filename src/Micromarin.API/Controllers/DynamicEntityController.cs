@@ -3,7 +3,6 @@ using Micromarin.Core.Models;
 using Micromarin.Core.Services;
 using Micromarin.Shared.BaseController;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace Micromarin.API.Controllers;
 
@@ -14,7 +13,6 @@ public class DynamicEntityController(IGenericService<DynamicEntity, DynamicEntit
   [HttpPost("Create")]
   public async Task<IActionResult> Create([FromBody] DynamicEntityDto dynamicEntityDto)
   {
-
     return ActionResultInstance(await _genericservice.AddAsync(dynamicEntityDto));
   }
 

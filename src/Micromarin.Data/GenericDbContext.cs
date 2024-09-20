@@ -14,6 +14,8 @@ public sealed class GenericDbContext : DbContext
   {
 
     base.OnModelCreating(modelBuilder);
+
+
   }
 
 
